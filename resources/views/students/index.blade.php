@@ -42,7 +42,24 @@ btn-sm">Edit</a>
                         </td>
                     </tr>
                 @endforeach
+
+
+
             </tbody>
         </table>
+
+        @if ($topMajor)
+            <div class="alert alert-info mt-4" role="alert">
+                Jurusan yang memiliki mahasiswa terbanyak adalah: <strong>{{ $topMajor->name }}</strong> (dengan
+                {{ $topMajor->students_count }} mahasiswa).
+            </div>
+        @else
+            <div class="alert alert-danger mt-4" role="alert">
+                Mahasiswa tidak memilih jurusan apapun <a href="{{ route('students.create') }}"
+                    class="btn btn-primary">Tambah Mahasiswa</a>
+            </div>
+        @endif
+
+
     </div>
 @endsection

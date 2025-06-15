@@ -10,11 +10,11 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="d-flex">
-            <a class="navbar-brand" href="{{ route('students.index') }}">Student Management</a>
-            <a class="navbar-brand" href="{{ route('majors.index') }}">Major Management</a>
-            <a class="navbar-brand" href="{{ route(name: 'subjects.index') }}">Subject Management</a>
-        </div>
+
+        <a class="navbar-brand" href="{{ route('students.index') }}">Student Management</a>
+        <a class="navbar-brand" href="{{ route('majors.index') }}">Major Management</a>
+        <a class="navbar-brand" href="{{ route(name: 'subjects.index') }}">Subject Management</a>
+
     </nav>
     <div class="container mt-4">
         @if (session('success'))

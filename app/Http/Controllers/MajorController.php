@@ -8,8 +8,8 @@ class MajorController extends Controller
 {
     public function index(Request $request)
     {
-        $sort = $request->get('sort', 'name');
-        $order = $request->get('order', 'asc');
+        $sort = $request->get('sort', 'students_count');
+        $order = $request->get('order', 'desc');
 
         $majors = \App\Models\Major::withCount('students')
             ->orderBy($sort, $order)

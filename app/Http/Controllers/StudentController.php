@@ -13,9 +13,13 @@ class StudentController extends Controller
     {
         // Eager loading untuk menghindari N+1 problem
         $students = Student::with(['major', 'subjects'])->get();
-        return view('students.index', compact('students'));
+        $topMajor = Major::withCount('students')
+            ->orderBy('students_count', 'desc')
+            ->first();
+  
+        return view('students.index', compact('students', 'topMajor'));
     }
-    
+
     public function store(Request $request)
     {
         $request->validate([

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+
+
 @section('content')
     <div class="card">
         <div class="card-header">
@@ -23,14 +25,15 @@
                     <th>Jurusan</th>
                     <td>{{ $student->major ? $student->major->name : '-' }}</td>
                 </tr>
+
                 <tr>
                     <th>Mata Kuliah</th>
                     <td>
                         @if ($student->subjects && $student->subjects->count())
                             <ul class="mb-0">
                                 @foreach ($student->subjects as $subject)
-                                    <a href="{{ route('subjects.show', $student->id) }}"
-                                        class="btn btn-info btn-sm w-100 mb-1">
+                                    <a href="{{ route('subjects.show', $subject->id) }}"
+                                        class="btn btn-outline-dark btn-sm w-100 mb-1">
                                         {{ $subject->name }} ({{ $subject->sks }} SKS)
                                     </a>
                                 @endforeach
@@ -40,7 +43,15 @@
                         @endif
                     </td>
                 </tr>
+                <tr>
+                    <th>Jumlah SKS</th>
+                    <td>
+                        {{ $student->subjects->sum('sks') }}
+                    </td>
+                </tr>
             </table>
+            <a href="{{ route('students.index') }}" class="btn btn-secondary">Kembali ke Daftar</a>
         </div>
+
     </div>
 @endsection
